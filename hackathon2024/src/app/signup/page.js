@@ -1,42 +1,144 @@
 "use client"
 import Navbar from '../component/navbar';
-import React from 'react';
+import React, { useState } from 'react';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Link from 'next/link';
 
 export default function Signup() {
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
     const email = document.getElementById('email').value;
     console.log("Email:", email);
+    // Reset the error state
+    setError('');
   };
 
   return (
     <div>
-      <Navbar/>
-      <div className="min-h-screen flex items-center justify-center w-full dark:bg-gray-950">
-        <div className="bg-white dark:bg-gray-900 shadow-md rounded-lg px-8 py-6 max-w-md">
-          <h1 className="text-2xl font-bold text-center mb-4 dark:text-gray-200">Sign Up!</h1>
-          <form>
-            <div className="mb-4">
-              <label  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
-              <input type="email" id="email" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="your@email.com" required/>
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
-              <input type="password" id="password1" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your password" required/>
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Confirm Password</label>
-              <input type="password" id="password2" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Re-Enter your password" required/>
-            </div>
-            <div className="flex items-center justify-between mb-4">
-              <a href="/login"
-                className="text-xs text-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Already have an account?</a>
-            </div>
-            <button onClick={handleSubmit} type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#8A4FFF] hover:bg-[#663eb6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sign Up</button>
-          </form>
-        </div>
-      </div>
+      <Navbar />
+      <Grid container component="main" sx={{ height: '100vh' }}>
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <div
+            sx={{
+              my: 8,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign up
+            </Typography>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 1, ml: 2 }}
+            >
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="confirmPassword"
+                label="Confirm Password"
+                type="password"
+                id="confirmPassword"
+                autoComplete="new-password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                error={error.length > 0}
+                helperText={error}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign Up
+              </Button>
+              <Grid container>
+                <Grid item>
+                  <Link href="#" variant="body2">
+                    {"Already have an account? Sign In"}
+                  </Link>
+                </Grid>
+              </Grid>
+              <Box mt={5}>
+                <Typography variant="body2" color="text.secondary" align="center">
+                  {'Copyright © '}
+                  <Link color="inherit" href="https://mui.com/">
+                    DriveInn
+                  </Link>{' '}
+                  {new Date().getFullYear()}
+                  {'.'}
+                </Typography>
+              </Box>
+            </Box>
+          </div>
+        </Grid>
+      </Grid>
     </div>
-  )
+  );
 }
