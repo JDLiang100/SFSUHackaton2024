@@ -10,7 +10,7 @@ export default function Home() {
     <Navbar />
     <div className="flex flex-col items-center bg-gray-100 min-h-screen">
       <div className="text-center mt-8">
-        <h1 className="text-3xl font-bold">Parking Made Simple: Where Convenience Meets Sustainability</h1>
+        <h1 className="text-3xl ">Parking Made Simple: Where Convenience Meets Sustainability</h1>
       </div>
   
       <div className="flex flex-wrap justify-center mt-8"> {/* Use flex-wrap to allow cards to wrap */}

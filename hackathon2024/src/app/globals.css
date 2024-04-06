@@ -11,6 +11,9 @@
   padding: 10px;
 }
 
+.nav-link:hover {
+  font-weight: bold;
+}
 .left-links {
   display: flex; /* Use flexbox for left links */
   align-items: center; /* Align items vertically */
