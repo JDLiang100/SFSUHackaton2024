@@ -61,3 +61,6 @@ POST /login
         username: string
         userID: number
     }
+----------PRISMA COMMANDS-------
+npx add -D prisma   //install prisma
+npx add @prisma/client
