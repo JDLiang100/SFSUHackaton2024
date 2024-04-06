@@ -16,6 +16,10 @@ export default function Home() {
       <div>
         <input placeholder="Your address"></input>
       </div>
+      <div>
+      <a href="/looking" className="nav-link">Looking</a>
+      <a href="/offering" className="nav-link">Offering</a>
+      </div>
     </main>
   )
 }
