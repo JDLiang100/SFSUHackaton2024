@@ -7,8 +7,8 @@ function Navbar() {
         <a href="#" className="nav-link">Home</a>
       </div>
       <div className="right-links">
-        <a href="#" className="nav-link">Sign Up</a>
-        <a href="#" className="nav-link">Log In</a>
+        <a href="/signup" className="nav-link">Sign Up</a>
+        <a href="/login" className="nav-link">Log In</a>
       </div>
     </nav>
   );
