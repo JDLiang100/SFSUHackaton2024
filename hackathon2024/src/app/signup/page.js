@@ -49,13 +49,13 @@ export default function Signup() {
           }}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <div
+          <Box
             sx={{
-              my: 8,
-              mx: 4,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              justifyContent: 'center',
+              height: '100vh',
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -136,7 +136,7 @@ export default function Signup() {
                 </Typography>
               </Box>
             </Box>
-          </div>
+          </Box>
         </Grid>
       </Grid>
     </div>
