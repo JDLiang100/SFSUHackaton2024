@@ -61,3 +61,7 @@ POST /login
         username: string
         userID: number
     }
+PRISMA COMMANDS
+
+    npx add -D prisma 
+    npx add @prisma/client
