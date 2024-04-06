@@ -28,6 +28,11 @@ export default function Offering() {
     const [images, setImages] = useState([]);
     const [price, setPrice] = useState('');
 
+    // Function to generate a random image URL
+    const getRandomImageUrl = () => {
+        return `https://www.parking.net/upload/about-parking/iStock-519196006.jpg`; // Add a random query parameter to force image reload
+    };
+
     const handleFileChange = (event) => {
         const files = Array.from(event.target.files);
         setImages([...images, ...files.map((file) => URL.createObjectURL(file))]);
@@ -43,20 +48,20 @@ export default function Offering() {
         <div>
             <Navbar />
             <Grid container component="main" sx={{ height: '100vh' }}>
-                <Grid
-                    item
-                    xs={false}
-                    sm={4}
-                    md={7}
-                    sx={{
-                        backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: (t) =>
-                            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                />
+            <Grid
+    item
+    xs={false}
+    sm={4}
+    md={7}
+    sx={{
+        backgroundImage: `url(${getRandomImageUrl()})`, // Use a function to generate a random image URL
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: (t) =>
+            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+    }}
+/>
                 <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                     <Box
                         sx={{
@@ -86,7 +91,7 @@ export default function Offering() {
                                 required
                                 fullWidth
                                 id="price"
-                                label="Price per Space"
+                                label="Price per Hour"
                                 name="price"
                                 type="number"
                                 value={price}
