@@ -16,12 +16,59 @@ body {
 .map-body {
     display: grid;
     grid-template-columns: 30% 70%;
-    grid-template-areas: "listing map";
+    grid-template-areas: "listing-search map"
+                         "listing map";
     height: calc(100vh - 64px);
 }
 
 .map {
     grid-area: map;
+}
+
+.listing-search {
+    grid-area: listing-search;
+    z-index: 2;
+    /* height: 60px; */
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    padding: 16px;
+    border-bottom: 1px solid #e5ecf4;
+    box-shadow: 5px 0 8px rgba(0, 0, 0, 0.1); /* horizontal-offset vertical-offset blur spread color */
+}
+
+.listing-search input {
+    height: 100%;
+    border: none;
+    outline: none;
+}
+
+.listing-search-input {
+    /* justify-self: stretch; */
+    width: 100%;
+    border: 1px solid #e5ecf4;
+    display: flex;
+    flex-direction: row;
+}
+
+.listing-search-input input {
+    flex-grow: 1;
+}
+
+.listing-search-input .icon {
+    /* margin-right: ; */
+}
+
+.listing-search-input:focus-within {
+    outline: solid #8a4fff;
+    outline-width: 1px;
+    border: 1px solid white;
+    transition: outline;
+}
+
+.listing-search-input:focus-within .purple-icon{
+    color: #8a4fff;
 }
 
 .listing {
@@ -31,11 +78,17 @@ body {
     grid-template-columns: 1fr;
     gap: 16px;
     padding: 16px;
+    /* Box Shadow */
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.1); /* horizontal-offset vertical-offset blur spread color */
+
+    /* Optional: Add transition for smooth effect */
+    /* transition: box-shadow 0.3s ease; */
+    z-index: 1;
 }
 
 .listing-item {
-    border: 1px solid gray;
-    border-radius: 8px;
+    border: 1px solid #e5ecf4;
+    /* border-radius: 8px; */
     padding: 8px;
     background: white;
     display: grid;
@@ -45,13 +98,18 @@ body {
     grid-template-columns: 1fr 2fr 1fr;
     /* grid-template-rows: auto auto auto; */
     height: 144px;
+    column-gap: 12px;
+    box-shadow: 5px 0 8px rgba(0, 0, 0, 0.1); /* horizontal-offset vertical-offset blur spread color */
 }
 
 .parking-image {
     grid-area: image;
     align-self: center;
-    border-radius: 8px;
+    object-fit: cover;
+    height: 128px;
+    width: 128px;
     margin-right: 16px;
+    /* border-radius: 8px; */
 }
 
 .parking-rating {
@@ -65,8 +123,13 @@ body {
 
 .price {
     grid-area: price;
+    color: #2eb715;
 }
 
 .parking-status {
     grid-area: details;
+}
+
+.purple-icon {
+    color: #c3bef7;
 }

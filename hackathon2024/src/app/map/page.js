@@ -6,6 +6,8 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import React from 'react';
 import { useState } from 'react';
 import Navbar from '../component/navbar';
+import { PiMagnifyingGlassDuotone } from "react-icons/pi";
+import { PiSlidersHorizontalDuotone } from "react-icons/pi";
 
 const containerStyle = {
   width: '100%',
@@ -13,8 +15,8 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523,
+  lat: 37.72649002075195,
+  lng: -122.4822769165039
 };
 
 const mapComponent = () => {
@@ -26,10 +28,7 @@ const mapComponent = () => {
   const [map, setMap] = useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-
+    map.setZoom(18);
     setMap(map);
   }, []);
 
@@ -38,7 +37,13 @@ const mapComponent = () => {
   }, []);
 
   return isLoaded ? (
-    <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10} onLoad={onLoad} onUnmount={onUnmount}>
+    <GoogleMap 
+      mapContainerStyle={containerStyle} 
+      center={center} 
+      zoom={5} 
+      onLoad={onLoad} 
+      onUnmount={onUnmount}>
+
       {/* Child components, such as markers, info windows, etc. */}
       <></>
     </GoogleMap>
@@ -54,6 +59,13 @@ const mapPage = () => {
     <>
       <Navbar />
       <main className="map-body">
+        <div className='listing-search'>
+          <div className='listing-search-input rounded-md px-4 py-2'>
+            <PiMagnifyingGlassDuotone className="icon purple-icon me-2 text-2xl" />
+            <input placeholder='Street Address'/>
+            <PiSlidersHorizontalDuotone className="icon purple-icon m2-2 text-2xl"/>
+          </div>
+        </div>
         <div className="listing">
           <Listing />
           <Listing />
