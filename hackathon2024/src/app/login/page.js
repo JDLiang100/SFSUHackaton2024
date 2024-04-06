@@ -4,7 +4,7 @@ export default function Login() {
         
         <div>
             <Navbar/>
-            <form>
+            <form class="info-form">
                 <h1>Log In</h1>
                 <div class="form-group">
                     <label >Email address</label>
