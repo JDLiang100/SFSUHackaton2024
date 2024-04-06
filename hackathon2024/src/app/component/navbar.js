@@ -3,9 +3,10 @@ import React from 'react';
 function Navbar() {
   return (
     <nav className="navbar" style={{ fontFamily: 'Arial, sans-serif', fontSize: '16px', height: '80px', backgroundColor: 'white' }}>
-      <div className="left-links">
-        <a href="/" className="home-link">
-          <img src="https://media.istockphoto.com/id/1144092062/vector/car-flat-icon.jpg?s=1024x1024&w=is&k=20&c=VGCElWctg6Sd2zUl5BYX09KjRscy_zCD4yjEEOyLdvU=" alt="Home" style={{ width: '72px', height: '72px' }} />
+      <div className="left-links" style={{ display: 'flex', alignItems: 'center' }}>
+        <a href="/" className="home-link" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
+          <img src="https://cdn-icons-png.flaticon.com/512/4682/4682932.png" alt="Home" style={{ width: '72px', height: '72px' }} />
+          <h1 className="drive-inn-title" style={{ color: "black", fontSize: '24px', fontWeight: 'bold', marginLeft: '10px', marginBottom: '0' }}>DriveInn</h1>
         </a>
       </div>
       <div className="right-links">
