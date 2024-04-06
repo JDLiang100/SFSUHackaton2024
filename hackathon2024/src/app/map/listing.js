@@ -4,18 +4,18 @@ import streetPic from "./street.jpg"
 
 const Listing = () => {
   return (
-    <div className="listing-item">
-        <p className="street-address text-3xl font-bold underline">123 Street</p>
-        <p className="parking-rating text-right-md">4.5/5</p>
+    <div className="listing-item rounded-lg">
+        <p className="street-address font-bold text-2xl">123 Street</p>
+        <p className="price text-right text-xl">$5/hr</p>
+        <p className="parking-rating">4.5/5</p>
         <p className="parking-status">Available</p>
         <Image 
-            className='parking-image'
+            className='parking-image rounded-lg'
             src={streetPic}
             width={128}
             height={128}
             alt="Picture of the street"
         />
-        <p className="price">$5/hr</p>
     </div>
   )
 }
