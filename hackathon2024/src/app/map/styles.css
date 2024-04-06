@@ -16,8 +16,7 @@ body {
 .map-body {
     display: grid;
     grid-template-columns: 30% 70%;
-    grid-template-areas: "listing-search map"
-                         "listing map";
+    grid-template-areas: "sidebar map";
     height: calc(100vh - 64px);
 }
 
@@ -25,8 +24,14 @@ body {
     grid-area: map;
 }
 
+.sidebar {
+    grid-area: sidebar;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+}
+
 .listing-search {
-    grid-area: listing-search;
+    /* grid-area: listing-search; */
     z-index: 2;
     /* height: 60px; */
     background: white;
@@ -73,9 +78,8 @@ body {
 
 .listing {
     overflow: scroll;
-    grid-area: listing;
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 16px;
     padding: 16px;
     /* Box Shadow */
@@ -98,7 +102,8 @@ body {
     grid-template-areas: "image info";
     grid-template-columns: 128px auto;
     /* grid-template-columns: 1fr 2fr 1fr; */
-    height: 144px;
+    min-height: 144px;
+    max-height: 180px;
     column-gap: 12px;
     box-shadow: 5px 0 8px rgba(0, 0, 0, 0.1); /* horizontal-offset vertical-offset blur spread color */
     transition-property: border, color; /* Specify properties to transition */
@@ -167,8 +172,31 @@ body {
 
 .parking-status {
     grid-area: details;
+    text-overflow: ellipsis;
 }
 
 .purple-icon {
     color: #c3bef7;
+}
+
+.remaining-space {
+    align-self: stretch;
+}
+
+/* Google autocomplete search bar styling */
+.pac-container {
+    border: 1px solid #8a4fff;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    width: 530px;
+    padding: 8px;
+    transform: translateY(10px);
+}
+
+.pac-icon {
+    color: #c3bef7;
+}
+
+.pac-item:hover .pac-icon {
+    color: #8a4fff;
 }

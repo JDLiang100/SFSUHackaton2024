@@ -1,82 +1,51 @@
-'use client';
+"use client"
 
-import Listing from './listing';
 import './styles.css';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import React from 'react';
-import { useState } from 'react';
 import Navbar from '../component/navbar';
-import { PiMagnifyingGlassDuotone } from "react-icons/pi";
-import { PiSlidersHorizontalDuotone } from "react-icons/pi";
+import GoogleMaps from './GoogleMaps';
+import Sidebar from './Sidebar';
+import { APIProvider, Map, Marker, useMapsLibrary } from '@vis.gl/react-google-maps';
 
-const containerStyle = {
-  width: '100%',
-  height: '100%',
-};
+// Fetch data based on previous page load
+// If there is no query, just load the default map
 
-const center = {
-  lat: 37.72649002075195,
-  lng: -122.4822769165039
-};
+// async function getData() {
+//   const res = await fetch('localhost:3000/driveway', {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify({
+//       lat: 37.72649002075195,
+//       long: -122.4822769165039,
+//       radius: 2.0,
+//       address: "sample address",
+//     })
+//   })
 
-const mapComponent = () => {
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: 'AIzaSyBTo3LHkRP2MrocWorE9iCkK5Z-JAdQY7A',
-  });
+//   // The return value is *not* serialized
+//   // You can return Date, Map, Set, etc.
 
-  const [map, setMap] = useState(null);
+//   if (!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error('Failed to fetch data')
+//   }
 
-  const onLoad = React.useCallback(function callback(map) {
-    map.setZoom(18);
-    setMap(map);
-  }, []);
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
-  }, []);
-
-  return isLoaded ? (
-    <GoogleMap 
-      mapContainerStyle={containerStyle} 
-      center={center} 
-      zoom={5} 
-      onLoad={onLoad} 
-      onUnmount={onUnmount}>
-
-      {/* Child components, such as markers, info windows, etc. */}
-      <></>
-    </GoogleMap>
-  ) : (
-    <></>
-  );
-};
-
-const MemoMap = React.memo(mapComponent);
+//   return res.json()
+// }
 
 const mapPage = () => {
+  // const data = await getData();
+
   return (
     <>
       <Navbar />
       <main className="map-body">
-        <div className='listing-search'>
-          <div className='listing-search-input rounded-md px-4 py-2'>
-            <PiMagnifyingGlassDuotone className="icon purple-icon me-2 text-2xl" />
-            <input placeholder='Street Address'/>
-            <PiSlidersHorizontalDuotone className="icon purple-icon ms-2 text-2xl" />
-          </div>
-        </div>
-        <div className="listing">
-          <Listing />
-          <Listing />
-          <Listing />
-          <Listing />
-          <Listing />
-          <Listing />
-          <Listing />
-        </div>
+        <Sidebar />
+
         <div className="map">
-          <MemoMap />
+          <GoogleMaps />
         </div>
       </main>
     </>
