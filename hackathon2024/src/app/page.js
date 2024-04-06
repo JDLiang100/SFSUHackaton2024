@@ -1,5 +1,5 @@
 import Navbar from './component/navbar';
-
+import Link from 'next/link';
 export default function Home() {
   return (
     <main>
@@ -18,8 +18,16 @@ export default function Home() {
               />
             </div>
             <div className="flex justify-between">
-              <a href="/looking" className="text-indigo-500 hover:text-indigo-600">Looking</a>
-              <a href="/offering" className="text-indigo-500 hover:text-indigo-600">Offering</a>
+            <Link href="/looking">
+                <button className="bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 focus:outline-none">
+                  Looking
+                </button>
+              </Link>
+              <Link href="/offering">
+                <button className="bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 focus:outline-none">
+                  Offering
+                </button>
+              </Link>
             </div>
           </div>
           <div className="flex-1 flex justify-center">
