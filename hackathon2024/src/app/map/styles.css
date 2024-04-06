@@ -1,0 +1,72 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    height: 64px;
+}
+
+.map-body {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-areas: "listing map";
+    height: calc(100vh - 64px);
+}
+
+.map {
+    grid-area: map;
+}
+
+.listing {
+    overflow: scroll;
+    grid-area: listing;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+}
+
+.listing-item {
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 8px;
+    background: white;
+    display: grid;
+    grid-template-areas: "image street price"
+                         "image rating rating"
+                         "image details details";
+    grid-template-columns: 1fr 2fr 1fr;
+    /* grid-template-rows: auto auto auto; */
+    height: 144px;
+}
+
+.parking-image {
+    grid-area: image;
+    align-self: center;
+    border-radius: 8px;
+    margin-right: 16px;
+}
+
+.parking-rating {
+    grid-area: rating;
+}
+
+.street-address {
+    grid-area: street;
+    /* font-size: 1.6rem; */
+}
+
+.price {
+    grid-area: price;
+}
+
+.parking-status {
+    grid-area: details;
+}
