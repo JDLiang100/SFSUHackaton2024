@@ -8,8 +8,19 @@ export default function Home() {
   return (
     <main>
       <Navbar />
-      <div className="flex justify-center items-center h-screen bg-gray-100">
-        <div className="max-w-6xl w-full bg-white p-12 rounded-lg shadow-lg flex items-center mt-20"> {/* Added mt-20 to move the box up */}
+      <div className="flex justify-center items-center bg-gray-100 flex-col min-h-screen"> {/* Changed h-screen to min-h-screen */}
+      <div className="flex justify-between mt-8 max-w-6xl w-full"> {/* Moved below the image container */}
+          <div className="card-container">
+            <SearchForParkingCard />
+          </div>
+          <div className="card-container">
+            <BookYourSpotCard />
+          </div>
+          <div className="card-container">
+            <ParkAndEnjoyCard />
+          </div>
+        </div>
+        <div className="max-w-6xl w-full bg-white p-12 rounded-lg shadow-lg flex items-center mt-20"> {/* Added flex class */}
           <div className="flex-1 mr-8">
             <div className="text-center mb-8">
               <h1 className="text-3xl font-bold">Find Parking!</h1>
@@ -37,24 +48,11 @@ export default function Home() {
           </div>
           <div className="flex-1 flex justify-center">
             <div className="bg-gray-200 p-4 rounded-lg">
-              <img src="https://media.istockphoto.com/id/1297933309/photo/asian-chinese-couple-unloading-luggage-with-their-daughter-from-their-car-at-their-house.jpg?s=612x612&w=0&k=20&c=uStLACesmxdyCHB9UKInOVPn0RosSEkiAUbRHog0P_E=" alt="Image Description" className="w-full h-auto" />
+              <img src="https://media.istockphoto.com/id/1297933309/photo/asian-chinese-couple-unloading-luggage-with-their-daughter-from-their-car-at-their-house.jpg?s=612x612&w=0&k=20&c=uStLACesmxdyCHB9UKInOVPn0RosSEkiAUbRHog0P_E=" alt="Image Description" className="w-full h-auto" style={{ width: '400px', height: '300px' }} />
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="flex justify-between mt-8">
-        <div className="max-w-6xl mx-auto flex justify-between">
-          <div className="card-container">
-            <SearchForParkingCard />
-          </div>
-          <div className="card-container">
-            <BookYourSpotCard />
-          </div>
-          <div className="card-container">
-            <ParkAndEnjoyCard />
-          </div>
-        </div>
       </div>
     </main>
   );

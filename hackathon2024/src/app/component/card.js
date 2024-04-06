@@ -9,12 +9,7 @@ export function SearchForParkingCard() {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="https://static.vecteezy.com/system/resources/previews/000/538/418/non_2x/the-magnifying-glass-and-pin-location-icon-and-map-vector-the-concept-of-travel.jpg"
-          alt="Magnifying Glass"
-        />
+        <div style={{ height: '300px', backgroundImage: `url('https://static.vecteezy.com/system/resources/previews/000/538/418/non_2x/the-magnifying-glass-and-pin-location-icon-and-map-vector-the-concept-of-travel.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             Search for Parking
@@ -32,12 +27,7 @@ export function BookYourSpotCard() {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="https://images.prismic.io/spothero/e8b36b04-1ad0-406a-b609-63ace2e3937e_faq-car.png?auto=compress,format"
-          alt="Book Your Spot"
-        />
+        <div style={{ height: '300px', backgroundImage: `url('https://media.istockphoto.com/id/531923620/vector/parking-lot-with-sign-vector-illustration-isolated-on-white.jpg?s=612x612&w=0&k=20&c=ZIPZgW3PD7by7XJtK-ydNg6Gn_yUQaSFhyhRaWOQDKE=')`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             Book Your Spot
@@ -55,12 +45,7 @@ export function ParkAndEnjoyCard() {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image="https://www.shutterstock.com/image-vector/little-girl-walking-on-pedestrian-260nw-1996451291.jpg"
-          alt="Park and Enjoy"
-        />
+        <div style={{ height: '300px', backgroundImage: `url('https://www.shutterstock.com/image-vector/little-girl-walking-on-pedestrian-260nw-1996451291.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             Park and Enjoy
@@ -74,5 +59,6 @@ export function ParkAndEnjoyCard() {
   );
 }
 
-// Define other card components similarly
+// Define other card components in a similar manner...
+
 
