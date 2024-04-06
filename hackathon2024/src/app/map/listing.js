@@ -14,7 +14,7 @@ const Listing = () => {
             alt="Picture of the street"
         />
         <div className="parking-spot-info">
-            <div class="primary-info">
+            <div className="primary-info">
                 <p className="street-address font-bold text-2xl">123 Street by Hill</p>
                 <p className="price text-right font-bold text-2xl">$5/hr</p>
             </div>
