@@ -5,7 +5,7 @@ import streetPic from "./street.jpg"
 const Listing = () => {
   return (
     <div className="listing-item">
-        <p className="street-address text-left-md">123 Street</p>
+        <p className="street-address text-3xl font-bold underline">123 Street</p>
         <p className="parking-rating text-right-md">4.5/5</p>
         <p className="parking-status">Available</p>
         <Image 
