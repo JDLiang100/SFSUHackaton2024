@@ -63,7 +63,7 @@ const mapPage = () => {
           <div className='listing-search-input rounded-md px-4 py-2'>
             <PiMagnifyingGlassDuotone className="icon purple-icon me-2 text-2xl" />
             <input placeholder='Street Address'/>
-            <PiSlidersHorizontalDuotone className="icon purple-icon m2-2 text-2xl"/>
+            <PiSlidersHorizontalDuotone className="icon purple-icon ms-2 text-2xl" />
           </div>
         </div>
         <div className="listing">

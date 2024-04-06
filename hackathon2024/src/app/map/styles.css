@@ -89,17 +89,49 @@ body {
 .listing-item {
     border: 1px solid #e5ecf4;
     /* border-radius: 8px; */
-    padding: 8px;
+    padding: 8px 24px 8px 8px;
     background: white;
     display: grid;
-    grid-template-areas: "image street price"
+    /* grid-template-areas: "image street price"
                          "image rating rating"
-                         "image details details";
-    grid-template-columns: 1fr 2fr 1fr;
-    /* grid-template-rows: auto auto auto; */
+                         "image details details"; */
+    grid-template-areas: "image info";
+    grid-template-columns: 128px auto;
+    /* grid-template-columns: 1fr 2fr 1fr; */
     height: 144px;
     column-gap: 12px;
     box-shadow: 5px 0 8px rgba(0, 0, 0, 0.1); /* horizontal-offset vertical-offset blur spread color */
+    transition-property: border, color; /* Specify properties to transition */
+    transition-duration: 0.3s; /* Duration of the transition */
+    transition-timing-function: ease-in-out; /* Timing function for the transition */
+}
+
+.listing-item:hover {
+    cursor: pointer;
+    border: 1px solid #c3bef7;
+    transition-property: border; /* Specify properties to transition */
+    transition-duration: 0.1s; /* Duration of the transition */
+    transition-timing-function: ease-in-out; /* Timing function for the transition */
+}
+
+.listing-item:hover .street-address {
+    color:#8a4fff;
+    transition-property: color; /* Specify properties to transition */
+    transition-duration: 0.1s; /* Duration of the transition */
+    transition-timing-function: ease-in-out; /* Timing function for the transition */
+    text-decoration: underline;
+}
+
+.parking-spot-info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+}
+
+.primary-info {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "street price";
 }
 
 .parking-image {
@@ -113,11 +145,18 @@ body {
 }
 
 .parking-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     grid-area: rating;
 }
 
 .street-address {
     grid-area: street;
+    margin-bottom: 0;
+    transition-property: border, color; /* Specify properties to transition */
+    transition-duration: 0.3s; /* Duration of the transition */
+    transition-timing-function: ease-in-out; /* Timing function for the transition */
     /* font-size: 1.6rem; */
 }
 
