@@ -3,12 +3,12 @@
 import { MapContext } from '@react-google-maps/api';
 // Using the official api provided by google for the map
 import { AdvancedMarker, APIProvider, Map, Marker, useMap, Pin } from '@vis.gl/react-google-maps';
-import {MarkerClusterer} from '@googlemaps/markerclusterer';
+import { MarkerClusterer } from '@googlemaps/markerclusterer';
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 // import { DrivewayMapContext } from './DrivewayMapContext';
 
 import { DrivewayMapContext } from './DrivewayMapContext';
-import { RiParkingFill } from "react-icons/ri";
+import { RiParkingFill } from 'react-icons/ri';
 import { fontSize } from '@mui/system';
 
 const containerStyle = {
@@ -21,61 +21,31 @@ const INITIAL_CAMERA = {
   zoom: 18,
 };
 
-// const sampleCoords = [
-//   ["sdlfjsdf",37.72675636631657,-122.48357839527878,
-//   ],
-//   ["dfjdfjdjfjf",37.72701091489936,-122.48220508755398,
-//   ],
-//   ["weweiii",37.72908132864706,-122.47844972767922,
-//   ]
-// ]
-
-const sampleCoords = [
-  {
-  id: 1,
-  lat: 37.72675636631657,
-  long: -122.48357839527878,
-  },
-{
-  id: 2,
-  lat: 37.72701091489936,
-  long: -122.48220508755398,
-}
-  ,
-
-  {
-  id: 3,
-  lat: 37.72908132864706,
-  long: -122.47844972767922,
-  }
-  
-]
-
 function MapView() {
   const map = useMap();
   const [cameraProps, setCameraProps] = useState(INITIAL_CAMERA);
   const [currentMap, setCurrentMap] = useState(null);
   // const { mapCamera } = useContext(DrivewayMapContext);
   const handleCameraChange = useCallback((ev) => setCameraProps(ev.detail));
-  
+
   // {[key: string]: Marker}
   //
   const [markers, setMarkers] = useState({});
-  
+
   const { listings } = useContext(DrivewayMapContext);
 
   const setMarkerRef = (marker, key) => {
     if (marker && markers[key]) return;
     if (!marker && !markers[key]) return;
 
-    setMarkers(prev => {
+    setMarkers((prev) => {
       if (marker) {
-        console.log("Old Marker");
+        console.log('Old Marker');
         console.log(markers);
-        return {...prev, [key]: marker};
+        return { ...prev, [key]: marker };
       } else {
-        console.log("New Marker");
-        const newMarkers = {...prev};
+        console.log('New Marker');
+        const newMarkers = { ...prev };
         delete newMarkers[key];
         console.log(newMarkers);
         return newMarkers;
@@ -83,21 +53,21 @@ function MapView() {
     });
   };
 
-  console.log(listings.map((listing) => [listing.long, listing.lat, listing.listingID]));
+  // console.log(listings.map((listing) => [listing.long, listing.lat, listing.listingID]));
   return (
-    <Map {...cameraProps} 
-      onCameraChanged={handleCameraChange} 
-      gestureHandling={'greedy'} 
-      mapId={'bfc8011594bf2b62'} 
+    <Map
+      {...cameraProps}
+      onCameraChanged={handleCameraChange}
+      gestureHandling={'greedy'}
+      mapId={'bfc8011594bf2b62'}
       libraries={['marker']}
-      >
-
-      <Markers points={sampleCoords} />
+    >
+      <Markers points={listings} />
     </Map>
   );
 }
 
-const Markers = ({points}) => {
+const Markers = ({ points }) => {
   const map = useMap();
   const [markers, setMarkers] = useState({});
   const clusterer = useRef(null);
@@ -106,7 +76,7 @@ const Markers = ({points}) => {
   useEffect(() => {
     if (!map) return;
     if (!clusterer.current) {
-      clusterer.current = new MarkerClusterer({map});
+      clusterer.current = new MarkerClusterer({ map });
     }
   }, [map]);
 
@@ -120,11 +90,11 @@ const Markers = ({points}) => {
     if (marker && markers[key]) return;
     if (!marker && !markers[key]) return;
 
-    setMarkers(prev => {
+    setMarkers((prev) => {
       if (marker) {
-        return {...prev, [key]: marker};
+        return { ...prev, [key]: marker };
       } else {
-        const newMarkers = {...prev};
+        const newMarkers = { ...prev };
         delete newMarkers[key];
         return newMarkers;
       }
@@ -133,22 +103,19 @@ const Markers = ({points}) => {
 
   return (
     <>
-      {points.map(point => (
+      {points.map((point) => (
         <AdvancedMarker
-          position={{lng: point.long, lat: point.lat}}
-          key={point.id}
-          ref={marker => setMarkerRef(marker, point.id)}>
+          position={{ lng: point.lng, lat: point.lat }}
+          key={point.listingID}
+          ref={(marker) => setMarkerRef(marker, point.listingID)}
+          clickable={true}
+          onClick={() => alert(`You clicked on ${point.address}`)}
+        >
           {/* <span className="tree">🌳</span> */}
-          <Pin
-            background={'#8a4fff'}
-            borderColor={'#5006e2'}
-            glyphColor={'#FFF'}
-            scale={2}
-            >
+          <Pin background={'#8a4fff'} borderColor={'#5006e2'} glyphColor={'#FFF'} scale={2}>
             <span className="car-icon">🚘</span>
             {/* <RiParkingFill style={{fontSize: 16}} />     */}
-            </Pin>
-          
+          </Pin>
         </AdvancedMarker>
       ))}
     </>
@@ -157,8 +124,8 @@ const Markers = ({points}) => {
 
 export default MapView;
 
-// {points.map((point) => 
-//   <AdvancedMarker 
+// {points.map((point) =>
+//   <AdvancedMarker
 //     position={{lat: point.lat, lng: point.long}}
 //     key={point.key}
 //   />
@@ -198,7 +165,7 @@ export default MapView;
 //         onClick={() => alert('marker was clicked!')}
 //         title={'clickable google.maps.Marker'}
 //     /> */}
-// {listings.map((listing) => 
+// {listings.map((listing) =>
 //     // <AdvancedMarker
 //     //     position={{lat: listing.lat, lng: listing.long}}
 //     //     clickable={true}

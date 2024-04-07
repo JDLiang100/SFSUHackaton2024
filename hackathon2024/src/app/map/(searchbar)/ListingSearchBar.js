@@ -9,10 +9,12 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import GoogleAutoComplete from '../GoogleAutoComplete';
 import Filters from './Filters';
+import { useMap } from '@vis.gl/react-google-maps';
 
 const ListingSearchBar = () => {
   const [revealFilters, setRevealFilters] = useState(false);
   const [range, setRange] = useState(2);
+  const map = useMap();
 
   const onRangeChange = (e) => {
     const value = e.target.value;
@@ -21,11 +23,27 @@ const ListingSearchBar = () => {
     e.preventDefault();
   }
 
+  const handleAutoCompleteResult = (placeResult) => {
+    console.log(placeResult);
+    console.log(placeResult);
+    if (!placeResult.hasOwnProperty('geometry')) {
+      console.log("Not a valid result!");
+    } else {
+      const coordinates = placeResult.geometry.location;
+      const latitutude = coordinates.lat();
+      const longitude = coordinates.lng();
+
+      map.setCenter({lat: latitutude, lng: longitude})
+
+      console.log("Place results: lat ", latitutude, "long ", longitude);
+    }
+  }
+
   return (
     <div className="listing-search">
       <div className="listing-search-input rounded-md px-4 py-2">
         <PiMagnifyingGlassDuotone className="icon purple-icon me-2 text-2xl" />
-        <GoogleAutoComplete />
+        <GoogleAutoComplete onAutoCompleteResult={handleAutoCompleteResult}/>
         {/* Your search input */}
         {/* <input type="text" placeholder="Search..." /> */}
         <button onClick={() => setRevealFilters(!revealFilters)} className='filters-button'>

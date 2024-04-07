@@ -28,6 +28,7 @@ body {
     grid-area: sidebar;
     display: grid;
     grid-template-rows: min-content 1fr;
+    overflow: scroll;
 }
 
 .listing-search {
