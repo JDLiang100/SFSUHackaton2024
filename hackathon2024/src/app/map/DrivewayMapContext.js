@@ -11,7 +11,7 @@ const sampleData = [
     long: -122.478360,
     lat: 37.718690,
     listingID: 1,
-    imgUrl: "https://th.bing.com/th/id/OIP.64LSVkMuGuCcFjvgR7U-JAHaE8?rs=1&pid=ImgDetMain",
+    imgUrl: "/parking1.jpeg",
 
   },
   {

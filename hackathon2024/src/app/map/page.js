@@ -66,6 +66,7 @@ const sampleData = [
     lat: 37.72675636631657,
     long: -122.48357839527878,
     listingID: 1,
+    imgUrl: "/parking1.jpeg",
   },
   {
     address: '4212 B Street',
