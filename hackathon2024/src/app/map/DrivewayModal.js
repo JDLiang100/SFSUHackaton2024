@@ -40,9 +40,11 @@ const DrivewayModal = ({ listing, handleClose }) => {
         </button>
         <div className='listing-information'>
         <div>
-          <h1>Address: {listing.address}</h1>
-          <h2>Rating: {listing.rating}({listing.numRatings})</h2>
-
+          <div>
+            <h1>Address: {listing.address}</h1>
+            <h2>Rating: {listing.rating}({listing.numRatings})</h2>
+            <h2>Price per hour: ${listing.price}</h2>
+          </div>
           <button class="group relative h-9 w-36 overflow-hidden rounded-2xl bg-green-500 text-lg font-bold text-white">
             Reserve
             <div class="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
