@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { DrivewayMapContext } from './DrivewayMapContext';
 import { PiX } from 'react-icons/pi';
 import Image from 'next/image';
-
+import Link from 'next/link';
 const DrivewayModal = ({ listing, handleClose }) => {
   return (
     <div className="driveway-modal-container">
@@ -43,10 +43,12 @@ const DrivewayModal = ({ listing, handleClose }) => {
           <h1>Address: {listing.address}</h1>
           <h2>Rating: {listing.rating}({listing.numRatings})</h2>
 
-          <button class="group relative h-9 w-36 overflow-hidden rounded-2xl bg-green-500 text-lg font-bold text-white">
-            Reserve
-            <div class="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
-          </button>
+          <Link href="/reserve">
+              <div className="group relative flex items-center justify-center h-9 w-36 overflow-hidden rounded-2xl bg-green-500 text-lg font-bold text-white">
+                Reserve
+                <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
+              </div>
+            </Link>
       
         </div>
 
