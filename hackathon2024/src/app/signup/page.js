@@ -119,11 +119,11 @@ export default function Signup() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign Up
+                <a href="/map" className="nav-link">Sign Up</a>
               </Button>
               <Grid container>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/login" variant="body2">
                     {"Already have an account? Sign In"}
                   </Link>
                 </Grid>

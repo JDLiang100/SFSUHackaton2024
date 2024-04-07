@@ -40,9 +40,11 @@ const DrivewayModal = ({ listing, handleClose }) => {
         </button>
         <div className='listing-information'>
         <div>
-          <h1>Address: {listing.address}</h1>
-          <h2>Rating: {listing.rating}({listing.numRatings})</h2>
-
+          <div>
+            <h1>Address: {listing.address}</h1>
+            <h2>Rating: {listing.rating}({listing.numRatings})</h2>
+            <h2>Price per hour: ${listing.price}</h2>
+          </div>
           <Link href="/reserve">
               <div className="group relative flex items-center justify-center h-9 w-36 overflow-hidden rounded-2xl bg-green-500 text-lg font-bold text-white">
                 Reserve
