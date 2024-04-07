@@ -1,12 +1,13 @@
 'use client';
 
 import './styles.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Navbar from '../component/navbar';
 import Sidebar from './Sidebar';
 import { APIProvider, Map, Marker, useMapsLibrary } from '@vis.gl/react-google-maps';
 import { MapContext } from '@react-google-maps/api';
 import MapView from './MapView';
+import { DrivewayMap, DrivewayMapContext } from './DrivewayMapContext';
 
 // Fetch data based on previous page load
 // If there is no query, just load the default map
@@ -36,7 +37,6 @@ import MapView from './MapView';
 //   return res.json()
 // }
 
-
 // Stuff to do
 /*
   Procedure
@@ -53,34 +53,76 @@ import MapView from './MapView';
     User can choose to reserve
 */
 
-
 // Move Google Context Here
 // Move Listing Context Here
+const sampleData = [
+  {
+    address: '123 Street by Hill',
+    name: '123 Street by Hill',
+    rating: 4.5,
+    numRatings: 17,
+    description: "Nice neighborhood where your car won't get jacked",
+    price: 5,
+    long: 37.72675636631657,
+    lat: -122.48357839527878,
+    listingID: 1,
+  },
+  {
+    address: '4212 B Street',
+    name: '4212 B Street by Park',
+    rating: 4.9,
+    numRatings: 5,
+    description: 'A little sketch, but well worth the price for what you get',
+    price: 2.5,
+    long: 37.72701091489936,
+    lat: -122.48220508755398,
+    listingID: 2,
+  },
+  {
+    address: '42 Gregor Avenue',
+    name: '42 Gregor Avenue',
+    rating: 4.2,
+    numRatings: 4,
+    description: 'This place is okay',
+    price: 3.2,
+    long: 37.72908132864706,
+    lat: -122.47844972767922,
+    listingID: 3,
+  },
+];
+
 const API_KEY = 'AIzaSyBTo3LHkRP2MrocWorE9iCkK5Z-JAdQY7A';
 const mapPage = () => {
-  // const data = await getData();
-  // const [data, setData] = useState(null);
-
+  const [data, setData] = useState(sampleData);
+  // const { setListings } = useContext(DrivewayMapContext);
+  // setListings(data);
+  useEffect(() => {
+    // setListings(data);
+  }, [data])
   // useEffect(() => {
-  //   fetch('/api/profile-data')
+  //   console.log('getting data');
+  //   fetch('/api/listing', {method: "POST"})
   //     .then((res) => res.json())
   //     .then((data) => {
-  //       setData(data)
-  //       setLoading(false)
-  //     })
-  // }, [])
-
+  //       console('data got', data);
+  //       setData(data);
+  //       setLoading(false);
+  //     });
+  // }, []);
+  
   return (
     <>
       <Navbar />
       {/* <MapContext.Provider> */}
-      <APIProvider apiKey={"AIzaSyBTo3LHkRP2MrocWorE9iCkK5Z-JAdQY7A"}>
-        <main className="map-body">
-          <Sidebar />
-          <div className="map">
-            <MapView />
-          </div>
-        </main>
+      <APIProvider apiKey={'AIzaSyBTo3LHkRP2MrocWorE9iCkK5Z-JAdQY7A'}>
+        <DrivewayMap>
+          <main className="map-body">
+            <Sidebar />
+            <div className="map">
+              <MapView />
+            </div>
+          </main>
+        </DrivewayMap>
       </APIProvider>
 
       {/* </MapContext.Provider> */}
