@@ -339,8 +339,9 @@ body {
     display: grid;
     grid-template-areas: "close close close"
                          "image info info"
-                         "image reserve reserve";
+                         "reserve reserve reserve";
     grid-template-rows: min-content 1fr min-content;
+    gap: 16px;
 }
 
 .driveway-modal .purple-icon {
@@ -364,4 +365,43 @@ body {
 
 .driveway-modal .listing-information {
     grid-area: info;
+    display: grid;
+    grid-template-areas: "street price"
+                         "rating rating"
+                         "description description";
+    grid-template-rows: min-content min-content 1fr;
+    gap: 8px;
+}
+
+.driveway-modal .street-address {
+    grid-area: street;
+}
+.driveway-modal .price {
+    grid-area: price;
+}
+.driveway-modal .rating {
+    grid-area: rating;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.driveway-modal .description {
+    grid-area: description;
+}
+
+.reservation-buttons {
+    grid-area: reserve;
+    /* align-items: stretch; */
+    justify-content: center;
+    display: grid;
+}
+
+.reservation-buttons button {
+    height: 60px;
+    border-radius: 8px;
+    background-color: #5006e2;
+    color: white;
+    padding: 16px 32px;
+    font-weight: bold;
 }

@@ -1,75 +1,89 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { DrivewayMapContext } from './DrivewayMapContext';
-import { PiX } from 'react-icons/pi';
+import { PiStarDuotone, PiX } from 'react-icons/pi';
 import Image from 'next/image';
-import Link from 'next/link';
-const DrivewayModal = ({ listing, handleClose }) => {
+
+const DrivewayModal = ({ 
+    // listing, 
+    handleClose,
+    name,
+    streetAddress,
+    priceRate,
+    avgRating,
+    numRatings,
+    description,
+    imgUrl,
+    imgAlt,
+    listingId,
+    handleClick,
+    active
+}) => {
+
+    const getImageURL = (listingId) => {
+                if (listingId % 9 === 0) return'/streetDefault.jpg';
+                if (listingId % 9 === 1) return'/parking1.jpeg';
+                if (listingId % 9 === 2) return'/parking2.jpeg';
+                if (listingId % 9 === 3) return'/parking3.jpeg';
+                if (listingId % 9 === 4) return'/parking4.jpeg';
+                if (listingId % 9 === 5) return'/parking5.jpeg';
+                if (listingId % 9 === 6) return'/parking6.jpeg';
+                if (listingId % 9 === 7) return'/parking7.jpeg';
+                if (listingId % 9 === 8) return'/parking8.jpeg'; 
+                else return'/parking9.jpeg'
+    }
   return (
     <div className="driveway-modal-container">
       <div className="driveway-modal">
-        <Image
-          className="listing-image rounded-lg"
-          src={
-            listing.listingId % 9 === 0
-              ? listing.imgUrl ?? '/streetDefault.jpg'
-              : listing.listingId % 9 === 1
-              ? listing.imgUrl ?? '/parking1.jpeg'
-              : listing.listingId % 9 === 2
-              ? listing.imgUrl ?? '/parking2.jpeg'
-              : listing.listingId % 9 === 3
-              ? listing.imgUrl ?? '/parking3.jpeg'
-              : listing.listingId % 9 === 4
-              ? listing.imgUrl ?? '/parking4.jpeg'
-              : listing.listingId % 9 === 5
-              ? listing.imgUrl ?? '/parking5.jpeg'
-              : listing.listingId % 9 === 6
-              ? listing.imgUrl ?? '/parking6.jpeg'
-              : listing.listingId % 9 === 7
-              ? listing.imgUrl ?? '/parking7.jpeg'
-              : listing.listingId % 9 === 8
-              ? listing.imgUrl ?? '/parking8.jpeg'
-              : listing.imgUrl ?? '/parking9.jpeg'
-          }
-          width={256}
-          height={256}
-          alt={listing.imgAlt ?? 'Picture of the street'}
-        />
         <button className="driveway-close" onClick={handleClose}>
           <PiX className="purple-icon" />
         </button>
+        <Image className="listing-image rounded-lg"
+            width={256}
+            height={256}
+            alt={'Picture of the street'}
+            src={getImageURL(listingId)}
+        />
         <div className='listing-information'>
-        <div>
-          <div>
-            <h1>Address: {listing.address}</h1>
-            <h2>Rating: {listing.rating}({listing.numRatings})</h2>
-            <h2>Price per hour: ${listing.price}</h2>
-          </div>
-          <Link href="/reserve">
-              <div className="group relative flex items-center justify-center h-9 w-36 overflow-hidden rounded-2xl bg-green-500 text-lg font-bold text-white">
-                Reserve
-                <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/30"></div>
-              </div>
-            </Link>
-      
-        </div>
-
-        </div>
-        {/* <div className="parking-spot-info">
-          <div className="primary-info">
             <p className="street-address font-bold text-2xl">{name}</p>
             <p className="price text-right font-bold text-2xl">${priceRate}/hr</p>
-          </div>
-          <p className="parking-rating">
-            <PiStarDuotone className="icon purple-icon me-1 text-lg" />
-            {avgRating}/5 ({numRatings})
-          </p>
-          <p className="parking-status">{description}</p>
+            <p className="rating">
+                <PiStarDuotone className="icon purple-icon me-1 text-lg" />
+                {/* 4.5/5 (17) */}
+                {avgRating}/5 ({numRatings})
+            </p>
+          <p className="description">{description}</p>
         </div>
-        <button>Reserve</button>*/}
+        <div className='reservation-buttons'>
+            <button onClick={handleClose}>Reserve Now!</button>
+        </div>
       </div>
     </div>
   );
 };
 
 export default DrivewayModal;
+
+// <div className="driveway-modal">
+//         <button className="driveway-close" onClick={handleClose}>
+//           <PiX className="purple-icon" />
+//         </button>
+//         <Image className="listing-image rounded-lg"
+//             width={256}
+//             height={256}
+//             alt={'Picture of the street'}
+//             src={getImageURL(listingId)}
+//         />
+//         <div className='listing-information'>
+//             <p className="street-address font-bold text-2xl">123 Street</p>
+//             <p className="price text-right font-bold text-2xl">$5.00/hr</p>
+//             <p className="rating">
+//                 <PiStarDuotone className="icon purple-icon me-1 text-lg" />
+//                 4.5/5 (17)
+//             </p>
+//           <p className="description">Nice cozy parking spot by the hill. Low chance of your cary getting dirty</p>
+//         </div>
+//         <div className='reservation-buttons'>
+//             <button onClick={handleClose}>Reserve Now!</button>
+//         </div>
+//       </div>
