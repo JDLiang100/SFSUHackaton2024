@@ -76,7 +76,7 @@ export default function Home() {
                   onClick={handleButtonClick}
                   disabled={error !== ''}
                 >
-                  Offering
+                   <a href="/signup">Offering</a>
                 </button>
               </Link>
             </div>

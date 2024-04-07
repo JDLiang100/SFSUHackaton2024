@@ -22,7 +22,9 @@ export default function Looking() {
                         className="text-xs text-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         Have An Account?</a>
                     </div>
-                    <button onClick="alert('hello')" type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#8A4FFF] hover:bg-[#663eb6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Find A Spot</button>
+                    <button onClick="alert('hello')" type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#8A4FFF] hover:bg-[#663eb6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <a href="/map" className="nav-link">Find Spot</a>
+                    </button>
                     </form>
                 </div>
             </div>
