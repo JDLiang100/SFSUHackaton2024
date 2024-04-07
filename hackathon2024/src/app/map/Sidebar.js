@@ -1,4 +1,4 @@
-import ListingSearchBar from './ListingSearchBar';
+import ListingSearchBar from './(searchbar)/ListingSearchBar';
 import Listing from './Listing';
 import { useContext } from 'react';
 import { DrivewayMapContext } from './DrivewayMapContext';

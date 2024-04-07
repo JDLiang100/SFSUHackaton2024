@@ -63,8 +63,8 @@ const sampleData = [
     numRatings: 17,
     description: "Nice neighborhood where your car won't get jacked",
     price: 5,
-    long: 37.72675636631657,
-    lat: -122.48357839527878,
+    lat: 37.72675636631657,
+    long: -122.48357839527878,
     listingID: 1,
   },
   {
@@ -74,8 +74,8 @@ const sampleData = [
     numRatings: 5,
     description: 'A little sketch, but well worth the price for what you get',
     price: 2.5,
-    long: 37.72701091489936,
-    lat: -122.48220508755398,
+    lat: 37.72701091489936,
+    long: -122.48220508755398,
     listingID: 2,
   },
   {
@@ -85,8 +85,8 @@ const sampleData = [
     numRatings: 4,
     description: 'This place is okay',
     price: 3.2,
-    long: 37.72908132864706,
-    lat: -122.47844972767922,
+    lat: 37.72908132864706,
+    long: -122.47844972767922,
     listingID: 3,
   },
 ];

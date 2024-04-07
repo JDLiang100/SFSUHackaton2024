@@ -282,3 +282,16 @@ body {
    outline: 3px solid #c3bef7;
    outline-offset: 0.125rem; 
  }
+
+.sample {
+    color: #22ccff;
+    color: #1e89a1;
+    color: #0f677a;
+    color: #5006e2;
+    color: #8a4fff;
+    color: #c3bef7;
+}
+
+.car-icon {
+    font-size: 20px;
+}

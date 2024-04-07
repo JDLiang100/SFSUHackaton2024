@@ -7,7 +7,7 @@ import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import GoogleAutoComplete from './GoogleAutoComplete';
+import GoogleAutoComplete from '../GoogleAutoComplete';
 import Filters from './Filters';
 
 const ListingSearchBar = () => {
