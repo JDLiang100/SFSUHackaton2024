@@ -3,8 +3,8 @@ import { useContext } from 'react';
 import { DrivewayMapContext } from './DrivewayMapContext';
 import { PiStarDuotone, PiX } from 'react-icons/pi';
 import Image from 'next/image';
-
-const DrivewayModal = ({ 
+import Link from 'next/link';
+const DrivewayModal  = ({ 
     // listing, 
     handleClose,
     name,
@@ -55,8 +55,10 @@ const DrivewayModal = ({
           <p className="description">{description}</p>
         </div>
         <div className='reservation-buttons'>
-            <button onClick={handleClose}>Reserve Now!</button>
-        </div>
+    <Link href="/reserve">
+        <button onClick={handleClose}>Reserve Now!</button>
+    </Link>
+</div>
       </div>
     </div>
   );
