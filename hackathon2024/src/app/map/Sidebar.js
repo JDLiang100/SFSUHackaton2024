@@ -1,12 +1,29 @@
 import ListingSearchBar from './(searchbar)/ListingSearchBar';
 import Listing from './Listing';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DrivewayMapContext } from './DrivewayMapContext';
+import { useMap } from '@vis.gl/react-google-maps';
 
 
 const Sidebar = () => {
 
   const { listings } = useContext(DrivewayMapContext);
+  const map = useMap();
+  const [activeId, setActiveId] = useState(null);
+
+  const handleClick = (listingId) => {
+    // Look through listings
+    
+    console.log(listingId);
+
+    if (!listings) return;
+    if (!map) return;
+
+    const driveway  = listings.find((listing) => listing.listingID == listingId);
+    setActiveId(driveway.listingID);
+    console.log(driveway);
+    map.panTo({lat: driveway.lat, lng:driveway.lng});
+  }
 
   return (
     <div className="sidebar">
@@ -23,6 +40,8 @@ const Sidebar = () => {
             // imgUrl={listing.long}
             // imgAlt={listing.lat}
             listingId={listing.listingID}
+            handleClick={handleClick}
+            active={listing.listingID == activeId ? true : false}
           />
           )}
         

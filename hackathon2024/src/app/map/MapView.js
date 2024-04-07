@@ -72,6 +72,10 @@ const Markers = ({ points }) => {
   const [markers, setMarkers] = useState({});
   const clusterer = useRef(null);
 
+  const handleMarkerClick = (listing) => {
+    map.panTo({lat: listing.lat, lng: listing.lng});
+  }
+
   // Initialize MarkerClusterer
   useEffect(() => {
     if (!map) return;
@@ -109,7 +113,7 @@ const Markers = ({ points }) => {
           key={point.listingID}
           ref={(marker) => setMarkerRef(marker, point.listingID)}
           clickable={true}
-          onClick={() => alert(`You clicked on ${point.address}`)}
+          onClick={() => handleMarkerClick(point)}
         >
           {/* <span className="tree">🌳</span> */}
           <Pin background={'#8a4fff'} borderColor={'#5006e2'} glyphColor={'#FFF'} scale={2}>

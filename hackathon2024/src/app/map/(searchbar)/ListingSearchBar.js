@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import React, { useState } from 'react';
 import { PiMagnifyingGlassDuotone } from 'react-icons/pi';
@@ -21,32 +21,32 @@ const ListingSearchBar = () => {
     console.log(value);
     setRange(value);
     e.preventDefault();
-  }
+  };
 
   const handleAutoCompleteResult = (placeResult) => {
     console.log(placeResult);
     console.log(placeResult);
     if (!placeResult.hasOwnProperty('geometry')) {
-      console.log("Not a valid result!");
+      console.log('Not a valid result!');
     } else {
       const coordinates = placeResult.geometry.location;
       const latitutude = coordinates.lat();
       const longitude = coordinates.lng();
 
-      map.setCenter({lat: latitutude, lng: longitude})
+      map.setCenter({ lat: latitutude, lng: longitude });
 
-      console.log("Place results: lat ", latitutude, "long ", longitude);
+      console.log('Place results: lat ', latitutude, 'long ', longitude);
     }
-  }
+  };
 
   return (
     <div className="listing-search">
       <div className="listing-search-input rounded-md px-4 py-2">
         <PiMagnifyingGlassDuotone className="icon purple-icon me-2 text-2xl" />
-        <GoogleAutoComplete onAutoCompleteResult={handleAutoCompleteResult}/>
+        <GoogleAutoComplete onAutoCompleteResult={handleAutoCompleteResult} />
         {/* Your search input */}
         {/* <input type="text" placeholder="Search..." /> */}
-        <button onClick={() => setRevealFilters(!revealFilters)} className='filters-button'>
+        <button onClick={() => setRevealFilters(!revealFilters)} className="filters-button">
           <PiSlidersHorizontalDuotone className="purple-icon text-2xl" />
         </button>
       </div>
@@ -56,5 +56,3 @@ const ListingSearchBar = () => {
 };
 
 export default ListingSearchBar;
-
-

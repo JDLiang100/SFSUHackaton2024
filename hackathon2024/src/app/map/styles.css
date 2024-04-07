@@ -296,3 +296,20 @@ body {
 .car-icon {
     font-size: 20px;
 }
+
+.active-listing {
+    cursor: pointer;
+    border: 1px solid #8a4fff;
+    background: #c3bef7;
+    transition-property: border; /* Specify properties to transition */
+    transition-duration: 0.1s; /* Duration of the transition */
+    transition-timing-function: ease-in-out; /* Timing function for the transition */
+}
+
+.active-listing .purple-icon {
+    color: white;
+}
+
+.active-listing .street-listing {
+    color: white;
+}

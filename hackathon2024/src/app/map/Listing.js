@@ -12,23 +12,24 @@ const Listing = ({
   imgUrl,
   imgAlt,
   listingId,
+  handleClick,
+  active
 }) => {
-  const count = Math.floor(Math.random() * 1000);
 
   return (
-    <div className="listing-item rounded-lg">
+    <div className={`listing-item rounded-lg ${active ? "active-listing" : ""}`} onClick={() => handleClick(listingId)}>
       <Image 
         className='parking-image rounded-lg'
         src={
-          count % 9 === 0 ? (imgUrl ?? "/streetDefault.jpg") :
-          count % 9 === 1 ? (imgUrl ?? "/parking1.jpeg") :
-          count % 9 === 2 ? (imgUrl ?? "/parking2.jpeg") :
-          count % 9 === 3 ? (imgUrl ?? "/parking3.jpeg") :
-          count % 9 === 4 ? (imgUrl ?? "/parking4.jpeg") :
-          count % 9 === 5 ? (imgUrl ?? "/parking5.jpeg") :
-          count % 9 === 6 ? (imgUrl ?? "/parking6.jpeg") :
-          count % 9 === 7 ? (imgUrl ?? "/parking7.jpeg") :
-          count % 9 === 8 ? (imgUrl ?? "/parking8.jpeg") :
+          listingId % 9 === 0 ? (imgUrl ?? "/streetDefault.jpg") :
+          listingId % 9 === 1 ? (imgUrl ?? "/parking1.jpeg") :
+          listingId % 9 === 2 ? (imgUrl ?? "/parking2.jpeg") :
+          listingId % 9 === 3 ? (imgUrl ?? "/parking3.jpeg") :
+          listingId % 9 === 4 ? (imgUrl ?? "/parking4.jpeg") :
+          listingId % 9 === 5 ? (imgUrl ?? "/parking5.jpeg") :
+          listingId % 9 === 6 ? (imgUrl ?? "/parking6.jpeg") :
+          listingId % 9 === 7 ? (imgUrl ?? "/parking7.jpeg") :
+          listingId % 9 === 8 ? (imgUrl ?? "/parking8.jpeg") :
           (imgUrl ?? "/parking9.jpeg")
         }
         width={128}
