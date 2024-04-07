@@ -31,6 +31,7 @@ const Sidebar = () => {
       <div className="listing">
         {listings && listings.map(listing => 
             <Listing
+            key={listing.listingID}
             name={listing.name}
             streetAddress={listing.address}
             priceRate={listing.price}

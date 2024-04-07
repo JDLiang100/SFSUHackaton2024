@@ -7,14 +7,17 @@ import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import GoogleAutoComplete from '../GoogleAutoComplete';
+import GoogleAutoComplete from '../../component/GoogleAutoComplete';
 import Filters from './Filters';
 import { useMap } from '@vis.gl/react-google-maps';
+import { useSearchParams } from 'next/navigation'
 
 const ListingSearchBar = () => {
+  const searchParams = useSearchParams();  
   const [revealFilters, setRevealFilters] = useState(false);
   const [range, setRange] = useState(2);
   const map = useMap();
+  const address = searchParams.get("formatted_address");
 
   const onRangeChange = (e) => {
     const value = e.target.value;
@@ -43,7 +46,7 @@ const ListingSearchBar = () => {
     <div className="listing-search">
       <div className="listing-search-input rounded-md px-4 py-2">
         <PiMagnifyingGlassDuotone className="icon purple-icon me-2 text-2xl" />
-        <GoogleAutoComplete onAutoCompleteResult={handleAutoCompleteResult} />
+        <GoogleAutoComplete onAutoCompleteResult={handleAutoCompleteResult} placeholder={address ?? "Street Address"}/>
         {/* Your search input */}
         {/* <input type="text" placeholder="Search..." /> */}
         <button onClick={() => setRevealFilters(!revealFilters)} className="filters-button">

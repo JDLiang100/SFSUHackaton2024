@@ -8,7 +8,6 @@ import { APIProvider, Map, Marker, useMapsLibrary } from '@vis.gl/react-google-m
 import { MapContext } from '@react-google-maps/api';
 import MapView from './MapView';
 import { DrivewayMap, DrivewayMapContext } from './DrivewayMapContext';
-
 // Fetch data based on previous page load
 // If there is no query, just load the default map
 

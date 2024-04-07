@@ -10,6 +10,7 @@ import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { DrivewayMapContext } from './DrivewayMapContext';
 import { RiParkingFill } from 'react-icons/ri';
 import { fontSize } from '@mui/system';
+import { useSearchParams } from 'next/navigation';
 
 const containerStyle = {
   width: '100%',
@@ -22,6 +23,7 @@ const INITIAL_CAMERA = {
 };
 
 function MapView() {
+  const searchParams = useSearchParams();
   const map = useMap();
   const [cameraProps, setCameraProps] = useState(INITIAL_CAMERA);
   const [currentMap, setCurrentMap] = useState(null);
@@ -52,6 +54,19 @@ function MapView() {
       }
     });
   };
+
+  useEffect(() => {
+    const lat = searchParams.get("lat");
+    const lng = searchParams.get("lng");
+
+    console.log(lat, lng);
+
+    if (!lat || !lng || !map) return;
+
+    // console.log("pass", {lat: lat, lng: lng});
+    // setCameraProps({center: {lat: lat, lng: lng}, zoom: cameraProps.zoom});
+    map.setCenter({lat: parseFloat(lat), lng: parseFloat(lng)});
+  }, [map])
 
   // console.log(listings.map((listing) => [listing.long, listing.lat, listing.listingID]));
   return (

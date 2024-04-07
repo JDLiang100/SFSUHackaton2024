@@ -3,7 +3,7 @@
 import React, {useRef, useEffect, useState} from 'react';
 import { useMapsLibrary } from '@vis.gl/react-google-maps';
 
-const GoogleAutoComplete = ({onAutoCompleteResult}) => {
+const GoogleAutoComplete = ({onAutoCompleteResult, className, placeholder}) => {
     const [placeAutocomplete, setPlaceAutocomplete] = useState(null);
   
     // Reference to input for google autocomplete
@@ -43,7 +43,7 @@ const GoogleAutoComplete = ({onAutoCompleteResult}) => {
     }, [onAutoCompleteResult, placeAutocomplete]);
 
     return (
-        <input ref={inputRef} placeholder="Street Address" />
+        <input className={className} ref={inputRef} placeholder={placeholder} />
     )
 }
 
