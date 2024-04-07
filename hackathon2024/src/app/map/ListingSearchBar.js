@@ -1,48 +1,80 @@
 "use client"
 
-import React, {useRef, useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import { PiMagnifyingGlassDuotone } from 'react-icons/pi';
 import { PiSlidersHorizontalDuotone } from 'react-icons/pi';
-import { APIProvider, Map, Marker, useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
-import GoogleAutoComplete from './GoogleAutoComplete';
-// const {AutocompleteService} = await google.maps.importLibrary("places");
-
+import Slider from '@mui/material/Slider';
+import Button from '@mui/material/Button';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 
 const ListingSearchBar = () => {
-  
-  const map = useMap();
+  const valuetext = (value) => {
+    return `${value} mi`; // Customizes the display of the slider value
+  };
 
-  // useEffect(() => {
-  //   if (!map) return;
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  //   // do something with the map instance
-  //   map.setCenter()
-  // }, [map]);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-  const handleAutoCompleteResult = (placeResult) => {
-    console.log(placeResult);
-    if (!placeResult.hasOwnProperty('geometry')) {
-      console.log("Not a valid result!");
-    } else {
-      const coordinates = placeResult.geometry.location;
-      const latitutude = coordinates.lat();
-      const longitude = coordinates.lng();
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-      map.setCenter({lat: latitutude, lng: longitude})
-
-      console.log("Place results: lat ", latitutude, "long ", longitude);
-    }
-  }
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   return (
-      <div className="listing-search">
-        <div className="listing-search-input rounded-md px-4 py-2">
-          <PiMagnifyingGlassDuotone className="icon purple-icon me-2 text-2xl" />
-            <GoogleAutoComplete onAutoCompleteResult={handleAutoCompleteResult} />
-          <PiSlidersHorizontalDuotone className="icon purple-icon ms-2 text-2xl" />
-        </div>
+    <div className="listing-search">
+      <div className="listing-search-input rounded-md px-4 py-2">
+        <PiMagnifyingGlassDuotone className="icon purple-icon me-2 text-2xl" />
+        {/* Your search input */}
+        <input type="text" placeholder="Search..." />
+        <Button
+          aria-describedby={id}
+          variant="contained"
+          onClick={handleClick}
+        >
+          <PiSlidersHorizontalDuotone className="purple-icon text-2xl" />
+        </Button>
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          PaperProps={{
+            style: {
+              width: '400px', // Adjust width as needed
+            },
+          }}
+        >
+          <div className="dropdown-content">
+            <Typography variant="h6">Radius</Typography>
+            <Slider
+              aria-label="Temperature"
+              defaultValue={30}
+              getAriaValueText={valuetext}
+              valueLabelDisplay="auto"
+              shiftStep={30}
+              step={1}
+              marks
+              min={.5}
+              max={10}
+            />
+            {/* Add additional content for the popover */}
+          </div>
+        </Popover>
       </div>
+    </div>
   );
 };
 
 export default ListingSearchBar;
+
+
