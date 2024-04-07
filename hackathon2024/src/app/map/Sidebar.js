@@ -3,6 +3,7 @@ import Listing from './Listing';
 import { useContext, useState } from 'react';
 import { DrivewayMapContext } from './DrivewayMapContext';
 import { useMap } from '@vis.gl/react-google-maps';
+import DrivewayModal from './DrivewayModal';
 
 
 const Sidebar = () => {
@@ -10,6 +11,12 @@ const Sidebar = () => {
   const { listings } = useContext(DrivewayMapContext);
   const map = useMap();
   const [activeId, setActiveId] = useState(null);
+
+  const getListing = (listingId) => {
+    const daListing = listings.find((listing) => listing.listingId = listingId);
+    console.log(daListing);
+    return daListing;
+  }
 
   const handleClick = (listingId) => {
     // Look through listings
@@ -70,6 +77,11 @@ const Sidebar = () => {
         /> */}
         <div className='remaining-space'></div>
       </div>
+      {activeId ? <DrivewayModal 
+          listing={getListing(activeId)} 
+          handleClose={() => setActiveId(null)} /> :
+          ""
+      }
     </div>
   );
 };

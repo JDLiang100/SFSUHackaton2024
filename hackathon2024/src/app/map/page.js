@@ -8,6 +8,7 @@ import { APIProvider, Map, Marker, useMapsLibrary } from '@vis.gl/react-google-m
 import { MapContext } from '@react-google-maps/api';
 import MapView from './MapView';
 import { DrivewayMap, DrivewayMapContext } from './DrivewayMapContext';
+
 // Fetch data based on previous page load
 // If there is no query, just load the default map
 
@@ -93,12 +94,13 @@ const sampleData = [
 
 const API_KEY = 'AIzaSyBTo3LHkRP2MrocWorE9iCkK5Z-JAdQY7A';
 const mapPage = () => {
+
   const [data, setData] = useState(sampleData);
   
   return (
     <>
       <Navbar />
-      {/* <MapContext.Provider> */}
+      {/* I know it's an exposed API key. I do not care */}
       <APIProvider apiKey={'AIzaSyBTo3LHkRP2MrocWorE9iCkK5Z-JAdQY7A'}>
         <DrivewayMap>
           <main className="map-body">

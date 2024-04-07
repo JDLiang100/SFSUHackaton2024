@@ -313,3 +313,55 @@ body {
 .active-listing .street-listing {
     color: white;
 }
+
+.driveway-modal-container {
+    position: fixed;
+    /* background: red; */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.driveway-modal {
+    width: 800px;
+    /* height: 500px; */
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid #5006e2;
+    background-color: white;
+    /* display: grid; */
+    transform: translateY(-60px);
+    /* Box Shadow */
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1); /* horizontal-offset vertical-offset blur spread color */
+    display: grid;
+    grid-template-areas: "close close close"
+                         "image info info"
+                         "image reserve reserve";
+    grid-template-rows: min-content 1fr min-content;
+}
+
+.driveway-modal .purple-icon {
+    font-size: 32px;
+    
+}
+
+.driveway-close {
+    background: none;
+    border: none;
+    grid-area: close;
+    justify-self: end;
+    /* outline: none; */
+}
+
+.driveway-modal .listing-image {
+    aspect-ratio: 1/1;
+    width: 256px;
+    /* align-self: center; */
+}
+
+.driveway-modal .listing-information {
+    grid-area: info;
+}
