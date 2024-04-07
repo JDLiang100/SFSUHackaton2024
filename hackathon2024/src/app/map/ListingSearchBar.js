@@ -51,6 +51,7 @@ const ListingSearchBar = () => {
           PaperProps={{
             style: {
               width: '400px', // Adjust width as needed
+              
             },
           }}
         >
