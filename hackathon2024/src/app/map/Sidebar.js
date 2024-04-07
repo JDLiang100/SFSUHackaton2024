@@ -26,7 +26,7 @@ const Sidebar = () => {
           />
           )}
         
-        <Listing
+        {/* <Listing
           name={'4212 B Street by Park'}
           streetAddress={'123 Street, San Francisco, CA, 94016'}
           priceRate={2.5}
@@ -47,7 +47,7 @@ const Sidebar = () => {
           imgUrl={null}
           imgAlt={'Street picture'}
           listingId={3}
-        />
+        /> */}
         <div className='remaining-space'></div>
       </div>
     </div>

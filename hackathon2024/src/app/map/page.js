@@ -94,21 +94,6 @@ const sampleData = [
 const API_KEY = 'AIzaSyBTo3LHkRP2MrocWorE9iCkK5Z-JAdQY7A';
 const mapPage = () => {
   const [data, setData] = useState(sampleData);
-  // const { setListings } = useContext(DrivewayMapContext);
-  // setListings(data);
-  useEffect(() => {
-    // setListings(data);
-  }, [data])
-  // useEffect(() => {
-  //   console.log('getting data');
-  //   fetch('/api/listing', {method: "POST"})
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console('data got', data);
-  //       setData(data);
-  //       setLoading(false);
-  //     });
-  // }, []);
   
   return (
     <>

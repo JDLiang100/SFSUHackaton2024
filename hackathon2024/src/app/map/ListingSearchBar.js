@@ -7,70 +7,32 @@ import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import GoogleAutoComplete from './GoogleAutoComplete';
+import Filters from './Filters';
 
 const ListingSearchBar = () => {
-  const valuetext = (value) => {
-    return `${value} mi`; // Customizes the display of the slider value
-  };
+  const [revealFilters, setRevealFilters] = useState(false);
+  const [range, setRange] = useState(2);
 
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  const onRangeChange = (e) => {
+    const value = e.target.value;
+    console.log(value);
+    setRange(value);
+    e.preventDefault();
+  }
 
   return (
     <div className="listing-search">
       <div className="listing-search-input rounded-md px-4 py-2">
         <PiMagnifyingGlassDuotone className="icon purple-icon me-2 text-2xl" />
+        <GoogleAutoComplete />
         {/* Your search input */}
-        <input type="text" placeholder="Search..." />
-        <Button
-          aria-describedby={id}
-          variant="contained"
-          onClick={handleClick}
-        >
+        {/* <input type="text" placeholder="Search..." /> */}
+        <button onClick={() => setRevealFilters(!revealFilters)} className='filters-button'>
           <PiSlidersHorizontalDuotone className="purple-icon text-2xl" />
-        </Button>
-        <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          PaperProps={{
-            style: {
-              width: '400px', // Adjust width as needed
-            },
-          }}
-        >
-          <div className="dropdown-content">
-            <Typography variant="h6">Radius</Typography>
-            <Slider
-              aria-label="Temperature"
-              defaultValue={30}
-              getAriaValueText={valuetext}
-              valueLabelDisplay="auto"
-              shiftStep={30}
-              step={1}
-              marks
-              min={.5}
-              max={10}
-            />
-            {/* Add additional content for the popover */}
-          </div>
-        </Popover>
+        </button>
       </div>
+      {revealFilters && <Filters range={range} onRangeChange={onRangeChange} />}
     </div>
   );
 };
