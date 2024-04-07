@@ -13,20 +13,23 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Link from 'next/link';
 
+
 export default function Signup() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-    const email = document.getElementById('email').value;
-    console.log("Email:", email);
-    // Reset the error state
+    const email = document.getElementById("email").value
+    console.log('email:',email)
+
+
     setError('');
   };
 
