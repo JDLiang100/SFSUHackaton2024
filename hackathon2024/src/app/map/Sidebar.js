@@ -4,10 +4,11 @@ import { useContext, useState } from 'react';
 import { DrivewayMapContext } from './DrivewayMapContext';
 import { useMap } from '@vis.gl/react-google-maps';
 import DrivewayModal from './DrivewayModal';
+import { useRouter } from 'next/navigation';
 
 
 const Sidebar = () => {
-
+  const router = useRouter();
   const { listings } = useContext(DrivewayMapContext);
   const map = useMap();
   const [activeId, setActiveId] = useState(null);
@@ -32,6 +33,10 @@ const Sidebar = () => {
     console.log(driveway);
     map.panTo({lat: driveway.lat, lng:driveway.lng});
     setActiveListing(driveway);
+  }
+
+  const handleReserveClick = () => {
+    router.push("/reserve");
   }
 
   return (
@@ -64,6 +69,7 @@ const Sidebar = () => {
         description={activeListing.description}
         listingId={activeListing.listingID}
         handleClick={activeListing.handleClick}
+        handleReserveClick={handleReserveClick}
         // active={activeListing.active}
         /> : <></>}
     </div>

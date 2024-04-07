@@ -80,6 +80,28 @@ const sampleData = [
     lat: 37.7317527,
     listingID: 7,
   },
+  {
+    address: '238 Helen St',
+    name: '238 Helen St',
+    rating: 4.7,
+    numRatings: 8,
+    description: 'convinient parking',
+    price: 2,
+    lng: -122.48421531669166,
+    lat: 37.72486004924522,
+    listingID: 7
+  },
+  {
+    address: 'N State Dr',
+    name: 'SFSU Student Parking',
+    rating: 4.7,
+    numRatings: 8,
+    description: 'A little expensive, but there is always space',
+    price: 2,
+    lng: -122.48291657833032,
+    lat: 37.726354583233224,
+    listingID: 7
+  }
 ];
 
 export const DrivewayMapContext = createContext(null);

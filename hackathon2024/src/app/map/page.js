@@ -92,16 +92,16 @@ const sampleData = [
   },
 ];
 
-const API_KEY = 'AIzaSyBTo3LHkRP2MrocWorE9iCkK5Z-JAdQY7A';
 const mapPage = () => {
 
   const [data, setData] = useState(sampleData);
-  
+  // console.log(`${process.env.G_API_KEY}`);
   return (
     <>
       <Navbar />
       {/* I know it's an exposed API key. I do not care */}
       <APIProvider apiKey={'AIzaSyBTo3LHkRP2MrocWorE9iCkK5Z-JAdQY7A'}>
+      {/* <APIProvider apiKey={process.env.G_API_KEY}> */}
         <DrivewayMap>
           <main className="map-body">
             <Sidebar />

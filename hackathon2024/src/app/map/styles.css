@@ -333,7 +333,8 @@ body {
     border: 1px solid #5006e2;
     background-color: white;
     /* display: grid; */
-    transform: translateY(-60px);
+    transform: translateY(-200px);
+    transform: translateX(-450px);
     /* Box Shadow */
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1); /* horizontal-offset vertical-offset blur spread color */
     display: grid;

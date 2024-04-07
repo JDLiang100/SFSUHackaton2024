@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { DrivewayMapContext } from './DrivewayMapContext';
 import { PiStarDuotone, PiX } from 'react-icons/pi';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 const DrivewayModal  = ({ 
     // listing, 
     handleClose,
+    handleReserveClick,
     name,
     streetAddress,
     priceRate,
@@ -55,10 +57,8 @@ const DrivewayModal  = ({
           <p className="description">{description}</p>
         </div>
         <div className='reservation-buttons'>
-    <Link href="/reserve">
-        <button onClick={handleClose}>Reserve Now!</button>
-    </Link>
-</div>
+            <button onClick={handleReserveClick}>Reserve Now!</button>
+        </div>
       </div>
     </div>
   );

@@ -89,6 +89,7 @@ const Markers = ({ points }) => {
 
   const handleMarkerClick = (listing) => {
     map.panTo({lat: listing.lat, lng: listing.lng});
+    
   }
 
   // Initialize MarkerClusterer
