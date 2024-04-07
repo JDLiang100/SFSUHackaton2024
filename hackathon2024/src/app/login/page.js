@@ -87,7 +87,7 @@ export default function Login() {
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
                             >
-                                Log In
+                                <a href="/map" className="nav-link">Log In</a>
                             </Button>
                             <Grid container>
                                 <Grid item xs>
