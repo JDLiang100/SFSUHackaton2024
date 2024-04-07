@@ -39,7 +39,9 @@ const DrivewayModal = ({ listing, handleClose }) => {
           <PiX className="purple-icon" />
         </button>
         <div className='listing-information'>
-        <p>{listing}</p>
+        <p>Address: {listing.address}</p>
+        <p>Rating: {listing.rating}({listing.numRatings})</p>
+      
         <p></p>
 
         </div>

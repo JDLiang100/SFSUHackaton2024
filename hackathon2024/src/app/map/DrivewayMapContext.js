@@ -32,8 +32,8 @@ const sampleData = [
     numRatings: 4,
     description: 'This place is okay',
     price: 4.2,
-    lng: 37.72908132864706,
-    lat: -122.47844972767922,
+    lat: 37.72908132864706,
+    lng: -122.47844972767922,
     listingID: 3,
   },
   {
